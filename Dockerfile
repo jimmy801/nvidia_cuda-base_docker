@@ -20,20 +20,20 @@ WORKDIR home
 
 # install packages
 RUN apt-get update && \
-	apt-get install -y \
-		cmake \
-		wget \
-		curl \
-		git \
-		vim \
-		software-properties-common
+    apt-get install -y \
+        cmake \
+        wget \
+        curl \
+        git \
+        vim \
+        software-properties-common
 
 
 # python2.7 and python3(python3.6) don't need to register dependency(ppa)
 # NOTE: register ppa may take more time
 RUN if [ "$PYTHON_VERSION" != "2.7" ] && [ "$PYTHON_VERSION" != "3" ] && [ "$PYTHON_VERSION" != "3.6" ]; then \
-		add-apt-repository ppa:deadsnakes/ppa; \
-	fi
+        add-apt-repository ppa:deadsnakes/ppa; \
+    fi
 
 # install specific python version
 RUN apt-get install -y \
@@ -50,8 +50,8 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
 
 # set ~/.bashrc
 RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' ~/.bashrc && \
-	# above enable color prompt of docker in terminal
-	# set alias
+    # above enable color prompt of docker in terminal
+    # set alias
     echo "alias nv='nvidia-smi'" >> ~/.bashrc && \
     echo "alias wnv='watch -n 1 nvidia-smi'" >> ~/.bashrc && \
     echo "alias wwnv='watch -n 0.1 nvidia-smi'" >> ~/.bashrc
