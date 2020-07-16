@@ -9,5 +9,6 @@ Dockerfile for nvidia cuda. You can use `--build-arg CUDA=<cuda_version>` to spe
 
 ```
 All arg set need to add prefix `--build-arg`. 
-That is to say, if you want to specify both python version and cuda version, you have to write `--build-arg PYTHON_VERSION=<version_num> --build-arg CUDA=<cuda_version>` to do this.
+That is to say, if you want to specify both python version and cuda version, 
+you have to write `--build-arg PYTHON_VERSION=<version_num> --build-arg CUDA=<cuda_version>` to do this.
 ```
