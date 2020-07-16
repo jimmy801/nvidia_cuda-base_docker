@@ -1,7 +1,7 @@
 # you can use `--build-arg CUDA=<cuda_version>` to specify pyton version
 # use `--build-arg CUDA=10.0-cudnn7-runtime-ubuntu18.04` to set cuda10 w/ cudnn7 as docker cuda
-# you can find cuda versions on: https://hub.docker.com/r/nvidia/cuda/tags
-# NOTE: default `CUDA` is `10.0-cudnn7-runtime-ubuntu18.04`
+# you can find docker cuda versions on: https://hub.docker.com/r/nvidia/cuda/tags
+# NOTE: default 
 
 # you can use `--build-arg PYTHON_VERSION=<version_num>` to specify pyton version
 # use `--build-arg PYTHON_VERSION=3.5` to set python3.5 as docker default python version
