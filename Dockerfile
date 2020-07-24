@@ -32,8 +32,15 @@ RUN apt-get update && \
 # register python dependency(ppa)
 # NOTE: Register ppa may take more time
 # More info: https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
-RUN add-apt-repository ppa:deadsnakes/ppa && \
-    apt-get update
+# Note: Python2.7 (all), Python 3.5 (16.04, xenial), Python 3.6 (18.04, bionic), Python 3.8 (20.04, focal) 
+#       are not provided by deadsnakes as upstream ubuntu provides those packages(means they don't need to register ppa)
+RUN if [ "$PYTHON_VERSION" != "2.7" ] && [ "$PYTHON_VERSION" != "3" ] && \
+       [[ "$CUDA" == *"ubuntu16.04" && "$PYTHON_VERSION" != "3.5" ]] || \
+       [[ "$CUDA" == *"ubuntu18.04" && "$PYTHON_VERSION" != "3.6" ]] || \
+       [[ "$CUDA" == *"ubuntu20.04" && "$PYTHON_VERSION" != "3.8" ]]; then \
+         add-apt-repository ppa:deadsnakes/ppa && \
+         apt-get update;
+    fi
 
 # install specific python version
 RUN apt-get install -y \
