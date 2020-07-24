@@ -39,7 +39,7 @@ RUN if [ "$PYTHON_VERSION" != "2.7" ] && [ "$PYTHON_VERSION" != "3" ] && \
        [[ "$CUDA" == *"ubuntu18.04" && "$PYTHON_VERSION" != "3.6" ]] || \
        [[ "$CUDA" == *"ubuntu20.04" && "$PYTHON_VERSION" != "3.8" ]]; then \
          add-apt-repository ppa:deadsnakes/ppa && \
-         apt-get update;
+         apt-get update; \
     fi
 
 # install specific python version
