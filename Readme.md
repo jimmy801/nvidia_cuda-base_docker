@@ -10,7 +10,7 @@ Dockerfile for nvidia cuda. You can use `--build-arg CUDA=<cuda_version>` to spe
 
 
 ## Usage
-You can see example on docker-image-build.sh
+You can see example on [docker-image-build.sh](https://github.com/jimmy801/nvidia_cuda-base_docker/blob/master/docker-image-build.sh)
 
 > Note:
 >    All arg set need to add prefix `--build-arg`. 
