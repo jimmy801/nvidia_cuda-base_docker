@@ -29,11 +29,11 @@ RUN apt-get update && \
         software-properties-common
 
 
-# python2.7 and python3(python3.6) don't need to register dependency(ppa)
-# NOTE: register ppa may take more time
-RUN if [ "$PYTHON_VERSION" != "2.7" ] && [ "$PYTHON_VERSION" != "3" ] && [ "$PYTHON_VERSION" != "3.6" ]; then \
-        add-apt-repository ppa:deadsnakes/ppa; \
-    fi
+# register python dependency(ppa)
+# NOTE: Register ppa may take more time
+# More info: https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
+RUN add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update
 
 # install specific python version
 RUN apt-get install -y \
