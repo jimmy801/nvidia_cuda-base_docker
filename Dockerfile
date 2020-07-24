@@ -38,9 +38,9 @@ RUN apt-get update && \
 #       are not provided by deadsnakes as upstream ubuntu provides those packages
 #       (it means they don't need to register ppa)
 RUN if [ "$PYTHON_VERSION" != "2.7" ] && [ "$PYTHON_VERSION" != "3" ] && \
-       [ "$CUDA" = *"ubuntu16.04" -o "$PYTHON_VERSION" != "3.5" ] || \
-       [ "$CUDA" = *"ubuntu18.04" -o "$PYTHON_VERSION" != "3.6" ] || \
-       [ "$CUDA" = *"ubuntu20.04" -o "$PYTHON_VERSION" != "3.8" ]; then \
+       [ "$CUDA" = *"ubuntu16.04" -a "$PYTHON_VERSION" != "3.5" ] || \
+       [ "$CUDA" = *"ubuntu18.04" -a "$PYTHON_VERSION" != "3.6" ] || \
+       [ "$CUDA" = *"ubuntu20.04" -a "$PYTHON_VERSION" != "3.8" ]; then \
          add-apt-repository ppa:deadsnakes/ppa && \
          apt-get update; \
     fi
