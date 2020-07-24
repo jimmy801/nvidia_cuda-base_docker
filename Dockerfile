@@ -41,8 +41,8 @@ RUN if [ "$PYTHON_VERSION" != "2.7" ] && [ "$PYTHON_VERSION" != "3" ] && \
        [ "$CUDA" = *"ubuntu16.04" -a "$PYTHON_VERSION" != "3.5" ] || \
        [ "$CUDA" = *"ubuntu18.04" -a "$PYTHON_VERSION" != "3.6" ] || \
        [ "$CUDA" = *"ubuntu20.04" -a "$PYTHON_VERSION" != "3.8" ]; then \
-         add-apt-repository ppa:deadsnakes/ppa && \
-         apt-get update; \
+           add-apt-repository ppa:deadsnakes/ppa && \
+           apt-get update; \
     fi
 
 # install specific python version
@@ -53,7 +53,10 @@ RUN apt-get install -y \
     ln -sf /usr/bin/python$PYTHON_VERSION /usr/bin/python
 
 # install pip
-RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
+RUN if [ $PYTHON_VERSION \> 3 ]; then \
+        apt-get install -y python3-distutils; \
+    fi && \
+    curl -O https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
     rm get-pip.py
 
