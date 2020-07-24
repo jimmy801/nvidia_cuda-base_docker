@@ -5,11 +5,16 @@ Dockerfile for nvidia cuda. You can use `--build-arg CUDA=<cuda_version>` to spe
 - Default `CUDA` is `10.0-cudnn7-runtime-ubuntu18.04`
 - Default `PYTHON_VERSION` is `3`
 - You can find docker cuda versions on: https://hub.docker.com/r/nvidia/cuda/tags
+- You can get more info of ppa on: https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
 
 
-```
-All arg set need to add prefix `--build-arg`. 
-That is to say, if you want to specify both python version and cuda version, 
-you have to add `--build-arg PYTHON_VERSION=<version_num> --build-arg CUDA=<cuda_version>` tag
-to do this.
-```
+
+## Usage
+You can see example on docker-image-build.sh
+
+> Note:
+>    All arg set need to add prefix `--build-arg`. 
+>    That is to say, if you want to specify both python version and cuda version, 
+>    you have to add `--build-arg PYTHON_VERSION=<version_num> --build-arg CUDA=<cuda_version>` tag
+>    to do this.
+
