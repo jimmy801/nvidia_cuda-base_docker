@@ -13,9 +13,9 @@
 #       `--build-arg PYTHON_VERSION=<version_num> --build-arg CUDA=<cuda_version>`
 #       to do this
 
-ARG CUDA=10.0-cudnn7-runtime-ubuntu18.04
+ARG CUDA=10.0-cudnn7-runtime-ubuntu16.04
 FROM nvidia/cuda:$CUDA
-ARG PYTHON_VERSION=3
+ARG PYTHON_VERSION=3.5
 
 WORKDIR home
 
@@ -29,7 +29,6 @@ RUN apt-get update && \
         vim \
         software-properties-common
 
-
 # register python dependency(ppa)
 # NOTE: Register ppa may take more time
 # More info: https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
@@ -37,10 +36,11 @@ RUN apt-get update && \
 #       Python 3.5 (16.04, xenial), Python 3.6 (18.04, bionic), Python 3.8 (20.04, focal) 
 #       are not provided by deadsnakes as upstream ubuntu provides those packages
 #       (it means they don't need to register ppa)
-RUN if [ "$PYTHON_VERSION" != "2.7" ] && [ "$PYTHON_VERSION" != "3" ] && \
-       [ "$CUDA" = *"ubuntu16.04" -a "$PYTHON_VERSION" != "3.5" ] || \
-       [ "$CUDA" = *"ubuntu18.04" -a "$PYTHON_VERSION" != "3.6" ] || \
-       [ "$CUDA" = *"ubuntu20.04" -a "$PYTHON_VERSION" != "3.8" ]; then \
+RUN ubuntu=$(lsb_release -a | grep "Release:") && ubuntu=${ubuntu##*:} && \
+    if [ "$PYTHON_VERSION" != "2.7" ] && [ "$PYTHON_VERSION" != "3" ] && \
+       [ \( ${ubuntu} = "16.04" -a "$PYTHON_VERSION" != "3.5" \) -o \
+       \( ${ubuntu} = "18.04" -a "$PYTHON_VERSION" != "3.6" \) -o \
+       \( ${ubuntu} = "20.04" -a "$PYTHON_VERSION" != "3.8" \) ]; then \
            add-apt-repository ppa:deadsnakes/ppa && \
            apt-get update; \
     fi
@@ -54,7 +54,8 @@ RUN apt-get install -y \
 
 # install pip
 RUN if [ $PYTHON_VERSION \> 3 ]; then \
-        apt-get install -y python3-distutils; \
+        apt-get install -y python3-distutils-extra && \
+        ln -sf /usr/bin/python$PYTHON_VERSION /usr/bin/python3; \
     fi && \
     curl -O https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
