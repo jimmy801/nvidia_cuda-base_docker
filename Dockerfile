@@ -13,9 +13,9 @@
 #       `--build-arg PYTHON_VERSION=<version_num> --build-arg CUDA=<cuda_version>`
 #       to do this
 
-ARG CUDA=10.0-cudnn7-runtime-ubuntu16.04
+ARG CUDA=10.0-cudnn7-runtime-ubuntu18.04
 FROM nvidia/cuda:$CUDA
-ARG PYTHON_VERSION=3.5
+ARG PYTHON_VERSION=3
 
 WORKDIR home
 
