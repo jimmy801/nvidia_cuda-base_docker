@@ -14,7 +14,7 @@ You can see example on [docker-image-build.sh](https://github.com/jimmy801/nvidi
 
 > Note:
 >
->    All arg set need to add prefix `--build-arg`. 
+>    All arg set need to add prefix flag `--build-arg`. 
 >
 >    That is to say, if you want to specify both python version and cuda version, 
 >    you have to add both `--build-arg PYTHON_VERSION=<version_num> --build-arg CUDA=<cuda_version>` tags
