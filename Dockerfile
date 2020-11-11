@@ -77,7 +77,7 @@ RUN if [ $PYTHON_VERSION \> 3 ]; then \
 # replace PS1 setting from 53th line (it can work on ubuntu18.04, I not sure whether other version can work perfectly or not)
 # RUN sed -i '53,/PS1/c \
 #    '"\    PS1=\'\$\{debian_chroot:\+\(\$debian_chroot\)\}\\\[\\\033\[01;32m\\\]\\\u\\\[\\\033\[00;37m\\\]@\\\[\\\033\[01;35m\\\]\\\h\\\[\\\033\[00m\\\]:\\\[\\\033\[01;34m\\\]\\\w\\\[\\\033\[00m\\\]# \'"\\nelse\\n"    PS1=\'\$\{debian_chroot:\+\(\$debian_chroot\)\}\\\u@\\\h:\\\w# \'"'\
-' ~/.bashrc
+#' ~/.bashrc
 
 # set ~/.bashrc
 RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' ~/.bashrc && \
