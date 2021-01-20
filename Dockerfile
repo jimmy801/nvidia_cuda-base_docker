@@ -76,7 +76,7 @@ RUN if [ $PYTHON_VERSION \> 3 ]; then \
 
 # uncomment it(from `RUN` to end) to not use default color prompt,
 # replace PS1 2nd occurence line (PS1 color setting line)
-# RUN sed -i '0,/PS1.*/! {0,/PS1.*/ s/PS1.*/'"\  \
+#RUN sed -i '0,/PS1.*/! {0,/PS1.*/ s/PS1.*/'"\  \
 #PS1=\'\$\{debian_chroot:\+\(\$debian_chroot\)\}\\\
 #\[\\\033\[01;32m\\\]\\\u\\\[\\\033\[00;37m\\\]@\\\
 #\[\\\033\[01;35m\\\]\\\h\\\[\\\033\[00m\\\]:\\\
