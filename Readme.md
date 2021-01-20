@@ -20,4 +20,9 @@ You can see example on [docker-image-build.sh](https://github.com/jimmy801/nvidi
 >    That is to say, if you want to specify cuda version, python version, and timezone
 >    you have to add `--build-arg CUDA=<cuda_version> --build-arg PYTHON_VERSION=<version_num> --build-arg TZ=<timezone>` tags
 >    to do this.
+>
+>
+>   Original `PS1` is <div><span style="background:black"><font color="#4e9a06">{user_name}@{host_name}</font><font color="white">:</font><font color="#32afff">{work_path}</font><font color="white">$</font>&nbsp;</span></div>
+>   and modified `PS1` is <div><span style="background:black"><font color="#4e9a06">{user_name}</font><font color="white">@</font><font color="#ad7fa8">{host_name}</font><font color="white">:</font><font color="#32afff">{work_path}</font><font color="white">#</font>&nbsp;</span></div>
+
 

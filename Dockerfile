@@ -1,13 +1,13 @@
-# you can use `--build-arg CUDA=<cuda_version>` to specify pyton version
+# you can use `--build-arg CUDA=<cuda_ver.>` to specify pyton version
 # use `--build-arg CUDA=10.0-cudnn7-runtime-ubuntu18.04` to set cuda10 w/ cudnn7 as docker cuda
 # you can find cuda versions on: https://hub.docker.com/r/nvidia/cuda/tags
 # NOTE: default `CUDA` is `10.0-cudnn7-runtime-ubuntu18.04`
 
-# you can use `--build-arg PYTHON_VERSION=<version_num>` to specify pyton version
+# you can use `--build-arg PYTHON_VERSION=<py_ver.>` to specify pyton version
 # use `--build-arg PYTHON_VERSION=3.5` to set python3.5 as docker default python version
 # NOTE: default `PYTHON_VERSION` is `3`
 
-# you can use `--build-arg TZ=<timezone>` to specify timezone
+# you can use `--build-arg TZ=<tz>` to specify timezone
 # use `--build-arg TZ=Asia/Taipei` to set Asia/Taipei as docker default timezone
 # you can find timezones on: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 # NOTE: default `TZ` is `Asia/Taipei`
@@ -15,7 +15,7 @@
 # NOTE: all arg set need to add prefix `--build-arg`
 #       that is to say, if you want to specify cuda version, python version, and timezone
 #       you have to write 
-#       `--build-arg CUDA=<cuda_version> --build-arg PYTHON_VERSION=<version_num> --build-arg TZ=<timezone>`
+#       `--build-arg CUDA=<cuda_ver.> --build-arg PYTHON_VERSION=<py_ver.> --build-arg TZ=<tz>`
 #       to do this
 
 ARG CUDA=10.0-cudnn7-runtime-ubuntu18.04
@@ -74,9 +74,13 @@ RUN if [ $PYTHON_VERSION \> 3 ]; then \
     rm get-pip.py
 
 
-# uncomment it to not use default color prompt,
+# uncomment it(from `RUN` to end) to not use default color prompt,
 # replace PS1 2nd occurence line (PS1 color setting line)
-# RUN sed -i '0,/PS1.*/! {0,/PS1.*/ s/PS1.*/'"\    PS1=\'\$\{debian_chroot:\+\(\$debian_chroot\)\}\\\[\\\033\[01;32m\\\]\\\u\\\[\\\033\[00;37m\\\]@\\\[\\\033\[01;35m\\\]\\\h\\\[\\\033\[00m\\\]:\\\[\\\033\[01;34m\\\]\\\w\\\[\\\033\[00m\\\]# \'"'/}' ~/.bashrc
+# RUN sed -i '0,/PS1.*/! {0,/PS1.*/ s/PS1.*/'"\  \
+#PS1=\'\$\{debian_chroot:\+\(\$debian_chroot\)\}\\\
+#\[\\\033\[01;32m\\\]\\\u\\\[\\\033\[00;37m\\\]@\\\
+#\[\\\033\[01;35m\\\]\\\h\\\[\\\033\[00m\\\]:\\\
+#\[\\\033\[01;34m\\\]\\\w\\\[\\\033\[00m\\\]# \'"'/}' ~/.bashrc
 
 # set ~/.bashrc
 RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' ~/.bashrc && \
